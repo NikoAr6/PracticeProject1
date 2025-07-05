@@ -1,4 +1,4 @@
-#add_executable(Test test_main.cpp)
-#target_link_libraries(Test PRIVATE utils core)
+add_executable(Practice1Test src/ests.cpp)
+target_link_libraries(Practice1Test PRIVATE utils core)
 
 enable_testing()
