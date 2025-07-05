@@ -12,5 +12,5 @@
 #endif
 
 namespace core{
-    CORE_API void base_function();
+    CORE_API std::string base_function();
 }
