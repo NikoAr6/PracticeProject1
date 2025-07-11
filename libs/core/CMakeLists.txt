@@ -21,6 +21,7 @@ install(TARGETS core
     EXPORT coreTargets # Создаёт coreTargets.cmake для использования find package
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
+    CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 )
 
 install(DIRECTORY include/ DESTINATION include/core)
