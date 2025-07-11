@@ -11,4 +11,16 @@ if(WIN32)
 endif()
 
 # Относительное местонахождение хедера
-target_include_directories(core PUBLIC include)
+target_include_directories(core PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> # При сборке в include 
+    $<INSTALL_INTERFACE:include> # После установки будут доступны
+)
+
+# Установка библиотеки и заголовочных файлов
+install(TARGETS core
+    EXPORT coreTargets # Создаёт coreTargets.cmake для использования find package
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
+)
+
+install(DIRECTORY include/ DESTINATION include/core)

@@ -11,7 +11,19 @@ if(WIN32)
 endif()
 
 # Относительное местонахождение хедера
-target_include_directories(utils PUBLIC include)
+target_include_directories(utils PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> # При сборке в include 
+    $<INSTALL_INTERFACE:include> # После установки будут доступны
+)
 
 # Зависимость от core
 target_link_libraries(utils PUBLIC core)
+
+# Установка библиотеки и заголовочных файлов
+install(TARGETS utils
+    EXPORT utilsTargets # Создаёт utilsTargets.cmake для использования find package
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
+)
+
+install(DIRECTORY include/ DESTINATION include/utils)

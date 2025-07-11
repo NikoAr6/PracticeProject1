@@ -9,13 +9,6 @@ int main() {
     #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);  // установка utf8 для консоли в случае win
     #endif
-    /*core::base_function();
-    std::cout << std::endl;
-    utils::utility_function();
-    std::cout << std::endl;
-    std::cout << " Я цитирую цитату цитаты:\"";
-    utils::utility_function();
-    std::cout << "\"" << std::endl;*/
     std::cout << core::base_function() << std::endl << utils::utility_function() << std::endl
         << " Я цитирую цитату цитаты:\"" << utils::utility_function() << "\"" << std::endl;
     std::cin.get();
