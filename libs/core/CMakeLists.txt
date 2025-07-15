@@ -19,8 +19,9 @@ target_include_directories(core PUBLIC
 # Установка библиотеки и заголовочных файлов
 install(TARGETS core
     EXPORT coreTargets # Создаёт coreTargets.cmake для использования find package
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
+    LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR} # Динамические библиотеки в lib (so, dylib)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}  # Статические библиотеки
     CONFIGURATIONS Debug Release RelWithDebInfo MinSizeRel
 )
 
