@@ -90,14 +90,13 @@ jobs:
 
     - name: Archive binaries
       if: startsWith(github.ref, 'refs/tags/')  # Делать только при использовании тега
-      shell: bash
       run: |
         mkdir -p dist
-        if [ "${{ runner.os }}" == "Windows" ]; then
-          7z a "dist/${{ steps.strings.outputs.artifact-name }}.zip" "${{ steps.strings.outputs.build-output-dir }}/**/*.exe" "${{ steps.strings.outputs.build-output-dir }}/**/*.dll"
-        else
-          tar -czvf "dist/${{ steps.strings.outputs.artifact-name }}.tar.gz" -C "${{ steps.strings.outputs.build-output-dir }}" .
-        fi
+        if ($env:Runner_OS -eq "Windows") {
+          7z a "dist/Windows-cl-Release.zip" "${{ steps.strings.outputs.build-output-dir }}\*.exe" "${{ steps.strings.outputs.build-output-dir }}\*.dll"
+        } else {
+          tar -czvf "dist/${{ runner.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}.tar.gz" -C "${{ steps.strings.outputs.build-output-dir }}" .
+        }
         
     - name: Upload artifacts
       if: startsWith(github.ref, 'refs/tags/')
