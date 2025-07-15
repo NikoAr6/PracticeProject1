@@ -92,7 +92,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')  # Делать только при использовании тега
       run: |
         mkdir -p dist
-        if [[ "${{ runner.os }}" == "Windows" ]]; then
+        if [ "${{ runner.os }}" == "Windows" ]; then
           7z a "dist/${{ steps.strings.outputs.artifact-name }}.zip" "${{ steps.strings.outputs.build-output-dir }}/**/*.exe" "${{ steps.strings.outputs.build-output-dir }}/**/*.dll"
         else
           tar -czvf "dist/${{ steps.strings.outputs.artifact-name }}.tar.gz" -C "${{ steps.strings.outputs.build-output-dir }}" .
