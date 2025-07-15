@@ -83,7 +83,7 @@ jobs:
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
 
     - name: Install
-      run: cmake --install . --config Release --prefix "./installdir"
+      run: cmake --install . --config Release --prefix "${{ github.workspace }}/installdir"
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
@@ -97,9 +97,9 @@ jobs:
       run: |
         mkdir -p dist
         if [[ "${{ runner.os }}" == "Windows" ]]; then
-          7z a "dist/Windows-cl-Release.zip" "${{ steps.strings.outputs.build-output-dir }}"/*.exe "${{ steps.strings.outputs.build-output-dir }}"/*.dll
+          7z a "dist/Windows-cl-Release.zip" "${{ github.workspace }}/installdir/*"
         else
-          tar -czvf "dist/${{ runner.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}.tar.gz" -C "${{ steps.strings.outputs.build-output-dir }}" .
+          tar -czvf "dist/${{ runner.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}.tar.gz" -C "${{ github.workspace }}/installdir" .
         fi
         
     - name: Upload artifacts
@@ -128,3 +128,5 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           files: |
             artifacts/**/*
+            dist/install-*.tar.gz
+            dist/install-*.zip
