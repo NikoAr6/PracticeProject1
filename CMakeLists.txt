@@ -27,7 +27,7 @@ include(CTest)
 # Экспорт rконфигураций
 install(EXPORT coreTargets
     FILE coreConfig.cmake
-    NAMESPACE Practice1:: # Practice1::core теперь можно как библиотеку в таргет линк!
+    NAMESPACE Practice1:: 
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/core
 )
 
@@ -36,3 +36,6 @@ install(EXPORT utilsTargets
     NAMESPACE Practice1::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/utils
 )
+
+set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib") 
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
