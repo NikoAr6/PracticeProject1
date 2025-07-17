@@ -24,7 +24,7 @@ add_subdirectory(testsCatch2)
 include(GNUInstallDirs) # Cтандартные пути для установки файлов
 include(CTest)
 
-# Экспорт rконфигураций
+# Экспорт конфигураций
 install(EXPORT coreTargets
     FILE coreConfig.cmake
     NAMESPACE Practice1:: 
