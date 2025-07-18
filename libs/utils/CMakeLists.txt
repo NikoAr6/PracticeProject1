@@ -20,7 +20,7 @@ target_include_directories(utils PUBLIC
 target_link_libraries(utils PUBLIC core)
 
 # Установка библиотеки и заголовочных файлов
-install(TARGETS utils
+install(TARGETS core utils
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}  # Статические библиотеки
@@ -28,3 +28,4 @@ install(TARGETS utils
 )
 
 install(DIRECTORY include/ DESTINATION include/utils)
+install(DIRECTORY include/ DESTINATION include/core)
