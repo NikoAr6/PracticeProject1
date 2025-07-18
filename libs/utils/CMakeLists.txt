@@ -3,12 +3,15 @@ file(GLOB SOURCES "src/*.cpp")
 file(GLOB HEADERS "include/*.h")
 
 # Библиотеки utils (SHARED-для динамической библ(dll))
-add_library(utils ${SOURCES} ${HEADERS})
+add_library(utils SHARED ${SOURCES} ${HEADERS})
 
 # Для win определяем экспорт при сборке
 if(WIN32)
     target_compile_definitions(utils PRIVATE UTILS_EXPORTS)
 endif()
+
+# Статическая библиотека
+add_library(utils_static STATIC ${SOURCES})
 
 # Относительное местонахождение хедера
 target_include_directories(utils PUBLIC 
@@ -20,7 +23,7 @@ target_include_directories(utils PUBLIC
 target_link_libraries(utils PUBLIC core)
 
 # Установка библиотеки и заголовочных файлов
-install(TARGETS core utils
+install(TARGETS core utils core_static utils_static
     LIBRARY DESTINATION ${CMAKE_INSTALL_BINDIR} # Динамические библиотеки в lib (so, dylib)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}  # Статические библиотеки
