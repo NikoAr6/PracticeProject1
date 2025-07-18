@@ -3,7 +3,7 @@ file(GLOB SOURCES "src/*.cpp")
 file(GLOB HEADERS "include/*.h")
 
 # Библиотеки utils (SHARED-для динамической библ(dll))
-add_library(utils SHARED ${SOURCES} ${HEADERS})
+add_library(utils ${SOURCES} ${HEADERS})
 
 # Для win определяем экспорт при сборке
 if(WIN32)
