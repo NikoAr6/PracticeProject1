@@ -3,7 +3,7 @@ project(Practice1)
 
 # Установка общей директории для исполняемых файлов и dll при сборке
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Загрузка Catch2
@@ -24,6 +24,6 @@ add_subdirectory(testsCatch2)
 include(GNUInstallDirs) # Cтандартные пути для установки файлов
 include(CTest)
 
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib") 
+set(CMAKE_INSTALL_RPATH "$ORIGIN") 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)  # Использовать RPATH при сборке
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)  # Добавить пути в RPATH
