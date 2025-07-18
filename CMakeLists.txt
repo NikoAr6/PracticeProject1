@@ -24,19 +24,6 @@ add_subdirectory(testsCatch2)
 include(GNUInstallDirs) # Cтандартные пути для установки файлов
 include(CTest)
 
-# Экспорт конфигураций
-install(EXPORT coreTargets
-    FILE coreConfig.cmake
-    NAMESPACE Practice1:: 
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/core
-)
-
-install(EXPORT utilsTargets
-    FILE utilsConfig.cmake
-    NAMESPACE Practice1::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/utils
-)
-
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/../../lib") 
+set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib") 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)  # Использовать RPATH при сборке
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)  # Добавить пути в RPATH

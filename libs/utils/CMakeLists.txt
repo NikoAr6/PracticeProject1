@@ -21,7 +21,6 @@ target_link_libraries(utils PUBLIC core)
 
 # Установка библиотеки и заголовочных файлов
 install(TARGETS utils
-    EXPORT utilsTargets # Создаёт utilsTargets.cmake для использования find package
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # Динамические библиотеки в lib (so, dylib)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # exe и dll в bin
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}  # Статические библиотеки
