@@ -24,6 +24,6 @@ add_subdirectory(testsCatch2)
 include(GNUInstallDirs) # Cтандартные пути для установки файлов
 include(CTest)
 
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib") 
+set(CMAKE_INSTALL_RPATH "$ORIGIN") 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)  # Использовать RPATH при сборке
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)  # Добавить пути в RPATH
