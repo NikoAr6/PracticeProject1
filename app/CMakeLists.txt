@@ -2,7 +2,7 @@
 add_executable(Practice1 src/main.cpp)
 
 # Зависимости
-target_link_libraries(Practice1 PRIVATE core utils)
+target_link_libraries(Practice1 PRIVATE core_shared utils_shared)
 
 # Пути к заголовкам
 target_include_directories(Practice1 PRIVATE 
